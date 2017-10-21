@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import LocalForage from 'localforage'
 
 import auth from 'app/auth/index'
 import dashboard from 'app/dashboard/index'
@@ -31,6 +32,15 @@ const routes = configure([
   // ...errors
 ])
 
-export default new VueRouter({
-  routes: routes
+const router = new VueRouter({
+  mode: 'history',
+  routes
 })
+
+router.beforeEach((to, from, next) => {
+  const token = LocalForage.getItem('token')
+  console.log(token)
+  next()
+})
+
+export default router

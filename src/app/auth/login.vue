@@ -9,7 +9,7 @@
     <!--</q-toolbar-title>-->
     <!--</q-toolbar>-->
     <div class="container-login row fullscreen justify-center items-center">
-      <div class="login">
+      <div class="login" @submit.prevent="submit">
         <div class="logo">
           <img src="../../assets/logo.svg">
         </div>
@@ -21,20 +21,22 @@
             <div>
               <q-field :error="login.error" :error-label="login.errorLabel">
                 <q-input
-                  @keyup.enter="submit"
                   v-model="login.value"
-                  :float-label="lang.login"
+                  :float-label="lang.login.label"
                   :type="'text'">
                 </q-input>
               </q-field>
               <q-field :error="password.error" :error-label="password.errorLabel">
                 <q-input
-                  @keyup.enter="submit"
+                  @submit="submit"
                   v-model="password.value"
-                  :float-label="lang.password"
+                  :float-label="lang.password.label"
                   :type="'password'">
                 </q-input>
               </q-field>
+            </div>
+            <div class="text-negative" v-if="error">
+              <small>{{ error }}</small>
             </div>
             <div>
               <q-checkbox
@@ -59,7 +61,8 @@
 </template>
 <script>
   import { QField, QInput, QLayout, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
-  import lang from '@lang/index.js'
+  import lang from '@lang/index'
+  import LocalForage from 'localforage'
 
   export default {
     name: 'login',
@@ -75,27 +78,45 @@
     },
     data: () => ({
       login: {
-        value: '',
+        value: 'ezioadsr',
         error: false,
-        errorLabel: 'Some error'
+        errorLabel: lang.auth.login.errorLabel
       },
       password: {
-        value: '',
+        value: '123456',
         error: false,
-        errorLabel: 'Some error'
+        errorLabel: lang.auth.password.errorLabel
       },
       remember: true,
       digital: false,
+      error: false,
       lang: lang.auth
     }),
     methods: {
       submit (event) {
-        if (this.validateLogin() && this.validatePassword()) {
-          this.$router.push('/dashboard')
+        if (this.validateLogin()) {
+          this.validatePassword()
         }
-      }
-    },
-    computed: {
+
+        const {login, password} = this
+
+        let error = login.error || password.error
+
+        // SIMULATE LOGIN
+        const token = 'eyJhbGciOiJIUzJmNiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImV6aW9hZHNyIiwicGFzc3dvcmQiOiIxMjM0NTYifQ._27KtMYYRwstUNuuvx4o6T8dGEI77kimlksH927stKE'
+
+        if (!error && login.value === 'ezioadsr' && password.value === '123456') {
+          LocalForage.setItem('token', token)
+
+          this.$router.push({name: 'dashboard.index'})
+
+          return
+        }
+
+        error = !error ? 'Usuário ou senha inválidos' : false
+
+        this.error = error
+      },
       validateLogin () {
         let login = this.login.value
         if (login.length) {

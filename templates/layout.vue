@@ -11,10 +11,10 @@
         <q-icon name="more_vert"></q-icon>
         <q-popover ref="popover">
           <q-list item-separator link>
-            <q-item @click="$refs.popover.close(), $router.push('/login')">
+            <q-item @click="logout">
               Sair
             </q-item>
-            <q-item @click="$refs.popover.close(), $router.push('/login')">
+            <q-item @click="help">
               Ajuda
             </q-item>
           </q-list>
@@ -45,6 +45,7 @@
     QPopover
   } from 'quasar-framework'
 
+  import LocalForage from 'localforage'
   import Drawer from './layout/Drawer.vue'
   import Toolbar from './layout/Toolbar.vue'
   import Tabs from './layout/Tabs.vue'
@@ -154,6 +155,13 @@
           this.rotateX = evt.beta * 0.7
           this.rotateY = evt.gamma * -0.7
         }
+      },
+      logout () {
+        this.$refs.popover.close()
+
+        LocalForage.removeItem('token')
+
+        this.$router.push({name: 'auth.index'})
       }
     },
     mounted () {
