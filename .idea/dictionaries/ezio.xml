@@ -2,6 +2,7 @@
   <dictionary name="ezio">
     <words>
       <w>mixins</w>
+      <w>namespaced</w>
     </words>
   </dictionary>
 </component>

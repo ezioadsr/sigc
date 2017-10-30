@@ -1,22 +1,22 @@
 <template>
-  <q-layout
-    ref="layout"
-    view="lHh Lpr fff"
-    :left-class="{'bg-grey-2': true}">
+  <q-layout>
+    <!--ref="layout"-->
+    <!--view="lHh Lpr fff"-->
+    <!--:left-class="{'bg-grey-2': true}">-->
 
-    <toolbar></toolbar>
-    <drawer></drawer>
+    <!--<toolbar></toolbar>-->
+    <!--<drawer></drawer>-->
 
-    <!--
-      Replace following <div> with
-      <router-view /> component
-      if using subRoutes
-    -->
-    <div class="layout-padding logo-container non-selectable no-pointer-events">
-      <div class="logo" :style="position">
-        <img src="~assets/quasar-logo-full.svg">
-      </div>
-    </div>
+    <!--&lt;!&ndash;-->
+      <!--Replace following <div> with-->
+      <!--<router-view /> component-->
+      <!--if using subRoutes-->
+    <!--&ndash;&gt;-->
+    <!--<div class="layout-padding logo-container non-selectable no-pointer-events">-->
+      <!--<div class="logo" :style="position">-->
+        <!--<img src="~assets/quasar-logo-full.svg">-->
+      <!--</div>-->
+    <!--</div>-->
   </q-layout>
 </template>
 

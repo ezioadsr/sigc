@@ -26,11 +26,11 @@
                   :type="'text'">
                 </q-input>
               </q-field>
-
+              
               <x-field>
                 <x-password v-model="pass"></x-password>
               </x-field>
-
+              
               <q-field :error="password.error" :error-label="password.errorLabel">
                 <q-input
                   @submit="submit"
@@ -67,9 +67,8 @@
 <script>
   import { XPassword, XField } from 'src/components'
   import { QField, QInput, QLayout, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
-  import lang from '@lang/index'
-  import LocalForage from 'localforage'
-
+  import { mapActions, mapGetters } from 'vuex'
+  
   export default {
     name: 'login',
     components: {
@@ -88,43 +87,34 @@
       login: {
         value: 'ezioadsr',
         error: false,
-        errorLabel: lang.auth.login.errorLabel
+        errorLabel: ''
       },
       pass: '',
       password: {
         value: '123456',
         error: false,
-        errorLabel: lang.auth.password.errorLabel
+        errorLabel: ''
       },
       remember: true,
       digital: false,
       error: false,
-      lang: lang.auth
+      lang: ''
     }),
     methods: {
+      ...mapActions('auth', ['login']),
       submit (event) {
         if (this.validateInputLogin()) {
           this.validateInputPassword()
         }
-
-        const {login, password} = this
-
-        let error = login.error || password.error
-
-        // SIMULATE LOGIN
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwicHJldmlsZWdlIjp0cnVlfQ.PMblP1Nu4nyvm7LUZdvRSXKg3OcP7imTmLf20lFTEl8'
-
-        if (!error && login.value === 'ezioadsr' && password.value === '123456') {
-          LocalForage.setItem('token', token)
-
-          this.$router.push({name: 'dashboard.index'})
-
-          return
-        }
-
-        error = !error ? 'Usuário ou senha inválidos' : false
-
-        this.error = error
+        let login = this.login.value
+        let password = this.password.value
+        this.login({login, password})
+          .then((response) => {
+            // this.$router.push({name: 'dashboard.index'})
+          })
+          .catch((error) => {
+            this.error = error
+          })
       },
       validateInputLogin () {
         let login = this.login.value
@@ -132,9 +122,7 @@
           this.login.error = false
           return true
         }
-
         this.login.error = true
-
         return false
       },
       validateInputPassword () {
@@ -143,11 +131,12 @@
           this.password.error = false
           return true
         }
-
         this.password.error = true
-
         return false
       }
+    },
+    computed: {
+      ...mapGetters('lang')
     }
   }
 </script>
@@ -155,7 +144,7 @@
   @import '~variables'
   .q-toolbar
     z-index 1
-
+  
   // TODO remove this index
   .container-login
     padding: 10vw

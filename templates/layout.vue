@@ -21,6 +21,7 @@
         </q-popover>
       </q-btn>
     </q-toolbar>
+
     <slot name="modal"></slot>
     <drawer slot="left"></drawer>
     <router-view></router-view>

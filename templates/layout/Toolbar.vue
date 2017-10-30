@@ -1,13 +1,13 @@
 <template>
-  <q-toolbar>
-    <q-btn flat @click="layout()">
-      <q-icon :name="icon"/>
-    </q-btn>
-    <q-toolbar-title>
-      Quasar App
-      <div slot="subtitle">Running on Quasar v{{$q.version}}</div>
-    </q-toolbar-title>
-  </q-toolbar>
+  <!--<q-toolbar>-->
+    <!--<q-btn flat @click="layout()">-->
+      <!--<q-icon :name="icon"/>-->
+    <!--</q-btn>-->
+    <!--<q-toolbar-title>-->
+      <!--Quasar App-->
+      <!--<div slot="subtitle">Running on Quasar v{{$q.version}}</div>-->
+    <!--</q-toolbar-title>-->
+  <!--</q-toolbar>-->
 </template>
 <script>
   import {

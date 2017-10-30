@@ -1,12 +1,12 @@
 export default [
   {
     name: 'dashboard',
-    path: '/',
+    path: '',
     redirect: '/dashboard'
   },
   {
     name: 'dashboard.index',
-    path: '/dashboard',
-    component: 'app/dashboard/components/index.vue'
+    path: 'dashboard',
+    component: 'app/dashboard/index.vue'
   }
 ]
