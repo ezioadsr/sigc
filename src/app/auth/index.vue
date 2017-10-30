@@ -26,6 +26,11 @@
                   :type="'text'">
                 </q-input>
               </q-field>
+
+              <x-field>
+                <x-password v-model="pass"></x-password>
+              </x-field>
+
               <q-field :error="password.error" :error-label="password.errorLabel">
                 <q-input
                   @submit="submit"
@@ -60,6 +65,7 @@
   </q-layout>
 </template>
 <script>
+  import { XPassword, XField } from 'src/components'
   import { QField, QInput, QLayout, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
   import lang from '@lang/index'
   import LocalForage from 'localforage'
@@ -67,6 +73,8 @@
   export default {
     name: 'login',
     components: {
+      XPassword,
+      XField,
       QField,
       QInput,
       QLayout,
@@ -82,6 +90,7 @@
         error: false,
         errorLabel: lang.auth.login.errorLabel
       },
+      pass: '',
       password: {
         value: '123456',
         error: false,
@@ -94,8 +103,8 @@
     }),
     methods: {
       submit (event) {
-        if (this.validateLogin()) {
-          this.validatePassword()
+        if (this.validateInputLogin()) {
+          this.validateInputPassword()
         }
 
         const {login, password} = this
@@ -103,7 +112,7 @@
         let error = login.error || password.error
 
         // SIMULATE LOGIN
-        const token = 'eyJhbGciOiJIUzJmNiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImV6aW9hZHNyIiwicGFzc3dvcmQiOiIxMjM0NTYifQ._27KtMYYRwstUNuuvx4o6T8dGEI77kimlksH927stKE'
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwicHJldmlsZWdlIjp0cnVlfQ.PMblP1Nu4nyvm7LUZdvRSXKg3OcP7imTmLf20lFTEl8'
 
         if (!error && login.value === 'ezioadsr' && password.value === '123456') {
           LocalForage.setItem('token', token)
@@ -117,7 +126,7 @@
 
         this.error = error
       },
-      validateLogin () {
+      validateInputLogin () {
         let login = this.login.value
         if (login.length) {
           this.login.error = false
@@ -128,7 +137,7 @@
 
         return false
       },
-      validatePassword () {
+      validateInputPassword () {
         let password = this.password.value
         if (password.length) {
           this.password.error = false
