@@ -1,10 +1,13 @@
 export default {
   props: {
-    value: {
-      required: true
-    }
+    label: String,
+    icon: String,
+    helper: String,
+    errorLabel: String,
+    count: [Number, Boolean],
+    inset: String,
+    dark: Boolean,
+    labelWidth: Number
   },
-  data: () => ({
-    lang: null
-  })
+  data: () => ({})
 }

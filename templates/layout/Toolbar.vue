@@ -27,9 +27,7 @@
         required: true
       }
     },
-    created () {
-      console.log(this.layout)
-    }
+    created () {}
   }
 </script>
 <style lang="stylus">

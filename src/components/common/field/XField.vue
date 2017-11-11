@@ -1,13 +1,13 @@
 <template>
   <div class="x-field">
     <q-field
-      :label="label",
-      :icon="icon",
-      :helper="helper",
-      :error="exposed.error"
+      :label="label"
+      :icon="icon"
+      :helper="helper"
+      :error="hasError"
       :error-label="errorLabel"
-      :count="count",
-      :inset="inset",
+      :count="count"
+      :inset="inset"
       :dark="dark">
       <slot></slot>
     </q-field>
@@ -16,7 +16,7 @@
 <script>
   import { AField } from 'src/components'
   import { QField } from 'quasar-framework'
-
+  
   export default {
     name: 'x-field',
     mixins: [AField],
@@ -25,13 +25,17 @@
     },
     props: {},
     data: () => ({
-      exposed: {
-        error: false
-      }
+      __input: null
     }),
-    provide: function provide () {
-      return {
-        __field: this.exposed
+    methods: {
+      _register (input) {
+        this.__input = input
+      }
+    },
+    computed: {
+      hasError () {
+        const {__input} = this
+        return __input && this.__input.$v.invalid
       }
     }
   }

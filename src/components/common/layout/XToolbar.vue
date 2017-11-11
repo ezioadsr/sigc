@@ -9,7 +9,7 @@
           :mat="mat(_before.icon)"/>
         <q-popover v-if="_before.hasOwnProperty('popover')">
           <q-list item-separator link>
-            <q-item v-for="_popover in _before.popover" @click="click(_popover)">{{_popover.label}}</q-item>
+            <q-item v-for="_popover in _before.popover" @click="click(_popover)" :key="_popover.id">{{_popover.label}}</q-item>
           </q-list>
         </q-popover>
       </q-btn>
@@ -24,7 +24,7 @@
           :mat="mat(_after.icon)"/>
         <q-popover v-if="_after.hasOwnProperty('popover')">
           <q-list item-separator link>
-            <q-item v-for="_popover in _after.popover" @click="click(_popover)">{{_popover.label}}</q-item>
+            <q-item v-for="_popover in _after.popover" @click="click(_popover)" :key="_popover.id" >{{_popover.label}}</q-item>
           </q-list>
         </q-popover>
       </q-btn>

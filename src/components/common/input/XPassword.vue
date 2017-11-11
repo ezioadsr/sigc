@@ -1,35 +1,66 @@
 <template>
   <div class="x-password">
+    <q-field
+      v-if="field"
+      :label="label"
+      :icon="icon"
+      :helper="helper"
+      :error="hasError"
+      :error-label="errorLabel"
+      :count="count"
+      :inset="inset"
+      :dark="dark">
+      
+      <q-input
+        v-model="password"
+        :type="'password'"
+        :float-label="floatLabel">
+      </q-input>
+    
+    </q-field>
+    
     <q-input
-      :type="password"
-      :float-label="lang.password.label"
-    ></q-input>
+      v-if="!field"
+      v-model="password"
+      :type="'password'"
+      :float-label="floatLabel">
+    </q-input>
   </div>
 </template>
 <script>
   import { required } from 'vuelidate/lib/validators'
   import { AInput } from 'src/components'
-  import { QInput } from 'quasar-framework'
-  import { mapState } from 'vuex'
-
+  import { QInput, QField } from 'quasar-framework'
+  import { mapGetters } from 'vuex'
+  
   export default {
     name: 'x-password',
-    mixin: [AInput],
-    components: {
-      QInput
+    mixins: [AInput],
+    props: {
+      field: {
+        type: Boolean,
+        default: false
+      },
+      required: {
+        type: Boolean,
+        default: true
+      }
     },
-    inject: ['__field'],
+    components: {
+      QInput, QField
+    },
     data: () => ({
-      password: null
+      password: null,
+      errorLabel: '',
+      floatLabel: ''
     }),
     created () {
-      const {XPassword} = this.lang.components
       this.password = this.value
-      this.lang = XPassword
-      console.log(required)
     },
     validations: {
-      required
+      password: {
+        required
+      }
     },
     watch: {
       password (value) {
@@ -37,9 +68,18 @@
       }
     },
     computed: {
-      ...mapState('locale', ['lang'])
+      ...mapGetters(['lang']),
+      map () {
+        this.errorLabel = this.lang.components.XPassword.errorLabel
+        this.floatLabel = this.lang.components.XPassword.floatLabel
+        return true
+      },
+      hasError () {
+        return this.$v.$invalid && this.required
+      }
     }
   }
+  F
 </script>
 <style lang="stylus">
 

@@ -5,10 +5,17 @@
   </div>
 </template>
 <script>
-  import { XDrawerAvatar, XDrawerList } from 'src/components'
+  // import { XDrawerAvatar, XDrawerList } from 'src/components'
+  import XDrawerAvatar from 'src/components/common/layout/XDrawerAvatar.vue'
+  import XDrawerList from 'src/components/common/layout/XDrawerList.vue'
+  
+  import { QInput } from 'quasar-framework'
   
   export default {
     name: 'x-drawer',
+    components: {
+      XDrawerList, XDrawerAvatar, QInput
+    },
     props: {
       name: {
         type: String,
@@ -22,10 +29,6 @@
         type: Array,
         required: true
       }
-    },
-    components: {
-      'x-drawer-avatar': XDrawerAvatar,
-      'x-drawer-list': XDrawerList
     }
   }
 </script>

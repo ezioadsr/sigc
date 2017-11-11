@@ -1,8 +1,8 @@
 import localforage from 'localforage'
 
 const login = ({commit, reject}, object) => {
-  const {login, password} = object
-  console.log(login, password)
+  // const {login, password} = object
+
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwicHJldmlsZWdlIjp0cnVlfQ.PMblP1Nu4nyvm7LUZdvRSXKg3OcP7imTmLf20lFTEl8'
 
   return new Promise(async (resolve) => {

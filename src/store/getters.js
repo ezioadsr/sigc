@@ -5,9 +5,12 @@ export default {
     return lang[state.locale.lang]
   },
   drawer (state) {
-    return state.layout.drawer
+    return state.layout.drawer.options
   },
   toolbar (state) {
     return state.layout.toolbar
+  },
+  drawerOpen (state) {
+    return state.layout.drawer.active
   }
 }

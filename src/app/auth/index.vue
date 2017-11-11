@@ -1,169 +1,79 @@
 <template>
-  <q-layout>
-    <!--<q-toolbar>-->
-    <!--<q-btn flat @click="digital = !digital">-->
-    <!--<q-icon name="android"/>-->
-    <!--</q-btn>-->
-    <!--<q-toolbar-title>-->
-    <!--SigC-->
-    <!--</q-toolbar-title>-->
-    <!--</q-toolbar>-->
+  <div class="auth-index">
     <div class="container-login row fullscreen justify-center items-center">
       <div class="login" @submit.prevent="submit">
         <div class="logo">
           <img src="../../assets/logo.svg">
         </div>
-        <div class="form">
-          <div class="digital">
-            <q-icon v-show="digital" name="fingerprint" size="5em"></q-icon>
-          </div>
-          <div :class="digital ? 'disabled' : ''">
-            <div>
-              <q-field :error="login.error" :error-label="login.errorLabel">
-                <q-input
-                  v-model="login.value"
-                  :float-label="lang.login.label"
-                  :type="'text'">
-                </q-input>
-              </q-field>
-              
-              <x-field>
-                <x-password v-model="pass"></x-password>
-              </x-field>
-              
-              <q-field :error="password.error" :error-label="password.errorLabel">
-                <q-input
-                  @submit="submit"
-                  v-model="password.value"
-                  :float-label="lang.password.label"
-                  :type="'password'">
-                </q-input>
-              </q-field>
-            </div>
-            <div class="text-negative" v-if="error">
-              <small>{{ error }}</small>
-            </div>
-            <div>
-              <q-checkbox
-                v-model="remember"
-                :color="'primary'"
-                :label="lang.remember">
-              </q-checkbox>
-            </div>
-            <div>
-              <q-btn color="primary" class="full-width" @click="submit">{{lang.submit}}</q-btn>
-            </div>
-            <div>
-              <a>
-                <small>{{lang.forget}}</small>
-              </a>
-            </div>
-          </div>
-        </div>
+        <c-auth-form
+          
+          @submit="submit">
+        </c-auth-form>
       </div>
     </div>
-  </q-layout>
+  </div>
 </template>
 <script>
-  import { XPassword, XField } from 'src/components'
-  import { QField, QInput, QLayout, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
-  import { mapActions, mapGetters } from 'vuex'
+  import { XPassword, XField, XLayout } from 'src/components'
+  //  import XPassword from 'src/components/common/input/XPassword.vue'
+  //  import XField from 'src/components/common/field/XField.vue'
+  //  import XLayout from 'src/components/common/layout/XLayout.vue'
+  
+  import { QField, QInput, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
+  import { mapActions } from 'vuex'
+  import CAuthForm from './components/form.vue'
   
   export default {
     name: 'login',
     components: {
+      CAuthForm,
       XPassword,
       XField,
       QField,
       QInput,
-      QLayout,
       QCheckbox,
       QBtn,
       QToolbar,
       QToolbarTitle,
-      QIcon
+      QIcon,
+      XLayout
     },
     data: () => ({
-      login: {
-        value: 'ezioadsr',
-        error: false,
-        errorLabel: ''
-      },
-      pass: '',
-      password: {
-        value: '123456',
-        error: false,
-        errorLabel: ''
-      },
+      login: 'ezioadsr',
+      password: '123456',
       remember: true,
       digital: false,
-      error: false,
-      lang: ''
+      error: false
     }),
+    created () {},
     methods: {
       ...mapActions('auth', ['login']),
-      submit (event) {
+      submit (credentials) {
         if (this.validateInputLogin()) {
           this.validateInputPassword()
         }
-        let login = this.login.value
-        let password = this.password.value
-        this.login({login, password})
+        this.login(credentials)
           .then((response) => {
-            // this.$router.push({name: 'dashboard.index'})
+            this.$router.push({name: 'dashboard.index'})
           })
           .catch((error) => {
             this.error = error
           })
-      },
-      validateInputLogin () {
-        let login = this.login.value
-        if (login.length) {
-          this.login.error = false
-          return true
-        }
-        this.login.error = true
-        return false
-      },
-      validateInputPassword () {
-        let password = this.password.value
-        if (password.length) {
-          this.password.error = false
-          return true
-        }
-        this.password.error = true
-        return false
+        debugger
       }
-    },
-    computed: {
-      ...mapGetters('lang')
     }
   }
 </script>
 <style lang="stylus" scoped>
-  @import '~variables'
-  .q-toolbar
-    z-index 1
-  
-  // TODO remove this index
-  .container-login
-    padding: 10vw
-    .login
-      width: 100%
-      max-width: 300px
-      .logo
-        width 100%
-        position relative
-      .form > div > div
-        margin: 4vh 0
-      .form
-        position relative
-        .digital
-          position absolute
-          height 100%
+  .auth-index
+    .container-login
+      padding: 10vw
+      .login
+        width: 100%
+        max-width: 300px
+        .logo
           width 100%
-          text-align center
-          padding 30px
-        .disabled
-          opacity .2 !important
+          position relative
+        .form > div > div
+          margin: 4vh 0
 </style>

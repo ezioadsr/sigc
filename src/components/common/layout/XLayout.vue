@@ -1,10 +1,22 @@
 <template>
   <div class="x-layout">
     <q-layout ref="layout" view="lHh Lpr fff" :left-class="{'bg-grey-2': true}">
-      <slot name="header"></slot>
-      <slot name="navigation"></slot>
-      <slot name="left"></slot>
-      <slot name="right"></slot>
+      <div slot="header">
+        <slot name="header"></slot>
+      </div>
+      
+      <div slot="navigation">
+        <slot name="navigation"></slot>
+      </div>
+      
+      <div slot="left">
+        <slot name="left"></slot>
+      </div>
+      
+      <div slot="right">
+        <slot name="right"></slot>
+      </div>
+      
       <div :class=" padding ? 'layout-padding': ''">
         <router-view></router-view>
       </div>
@@ -136,6 +148,12 @@
           this.rotateX = evt.beta * 0.7
           this.rotateY = evt.gamma * -0.7
         }
+      },
+      toggleLeft () {
+        this.$refs.layout.toggleLeft()
+      },
+      toggleRight () {
+        this.$refs.layout.toggleRight()
       }
     },
     mounted () {

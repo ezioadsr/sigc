@@ -1,6 +1,6 @@
 <template>
   <div class="help-index">
-  
+    teste
   </div>
 </template>
 <script>

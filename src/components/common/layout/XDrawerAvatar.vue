@@ -6,6 +6,7 @@
 <script>
   export default {
     name: 'x-drawer-avatar',
+    data: () => ({}),
     props: {
       name: {
         type: String,

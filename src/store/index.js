@@ -16,8 +16,6 @@ const modules = {
   dashboard
 }
 
-console.log(auth)
-
 export default new Vuex.Store({
   namespaced: false,
   modules,
