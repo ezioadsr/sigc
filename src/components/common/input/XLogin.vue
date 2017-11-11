@@ -1,5 +1,5 @@
 <template>
-  <div class="x-password">
+  <div class="x-login">
     <q-field
       v-if="field"
       :label="label"
@@ -13,7 +13,7 @@
       
       <q-input
         v-model="data"
-        :type="'password'"
+        :type="'text'"
         :float-label="floatLabel">
       </q-input>
     
@@ -22,7 +22,7 @@
     <q-input
       v-if="!field"
       v-model="data"
-      :type="'password'"
+      :type="'text'"
       :float-label="floatLabel">
     </q-input>
   </div>
@@ -34,7 +34,7 @@
   import { mapGetters } from 'vuex'
   
   export default {
-    name: 'x-password',
+    name: 'x-login',
     mixins: [AInput],
     props: {
       field: {
@@ -64,11 +64,6 @@
     },
     computed: {
       ...mapGetters(['lang']),
-      map () {
-        this.errorLabel = this.lang.components.XPassword.errorLabel
-        this.floatLabel = this.lang.components.XPassword.floatLabel
-        return this.floatLabel
-      },
       hasError () {
         return this.$v.$invalid && this.required
       }

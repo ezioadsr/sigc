@@ -5,7 +5,7 @@ export { ALayout, AInput, AField } from 'src/components/common/abstract'
 export { XField } from 'src/components/common/field'
 
 /** Input Components */
-export { XPassword } from 'src/components/common/input'
+export { XPassword, XFingerPrint, XLogin } from 'src/components/common/input'
 
 /** Layout Components */
-export { XDrawerList, XLayout, XDrawerAvatar, XDrawer, XToolbar } from 'src/components/common/layout'
+export { XDrawerList, XLayout, XDrawerAvatar, XDrawer, XToolbar, XError, XLogo } from 'src/components/common/layout'

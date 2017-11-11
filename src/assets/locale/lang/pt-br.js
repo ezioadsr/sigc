@@ -4,7 +4,12 @@ const XPassword = {
   errorLabel: 'Senha inválida'
 }
 
-const components = {XPassword}
+const XLogin = {
+  floatLabel: 'Login',
+  errorLabel: 'Login inválido'
+}
+
+const components = {XPassword, XLogin}
 
 const app = {}
 
