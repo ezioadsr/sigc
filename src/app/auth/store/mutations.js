@@ -20,6 +20,10 @@ const SET_AUTH_ATTRIBUTES = (state, token) => {
   if (decoded.hasOwnProperty('email')) {
     state.email = decoded.email
   }
+
+  if (decoded.hasOwnProperty('gender')) {
+    state.gender = decoded.gender
+  }
 }
 
 const REMOVE_TOKEN = (state) => {

@@ -6,24 +6,26 @@
       :icon="icon"
       :helper="helper"
       :error="hasError"
-      :error-label="errorLabel"
+      :error-label="component.errorLabel"
       :count="count"
       :inset="inset"
       :dark="dark">
       
       <q-input
-        v-model="data"
+        v-model="input"
         :type="'password'"
-        :float-label="floatLabel">
+        :float-label="component.floatLabel"
+        @change="$emit('input', input)">
       </q-input>
     
     </q-field>
     
     <q-input
       v-if="!field"
-      v-model="data"
+      v-model="input"
       :type="'password'"
-      :float-label="floatLabel">
+      :float-label="component.floatLabel"
+      @change="$emit('input', input)">
     </q-input>
   </div>
 </template>
@@ -31,7 +33,6 @@
   import { required } from 'vuelidate/lib/validators'
   import { AInput } from 'src/components'
   import { QInput, QField } from 'quasar-framework'
-  import { mapGetters } from 'vuex'
   
   export default {
     name: 'x-password',
@@ -49,9 +50,7 @@
     components: {
       QInput, QField
     },
-    data: () => ({
-      data: null
-    }),
+    data: () => ({}),
     validations: {
       text: {
         required
@@ -63,12 +62,6 @@
       }
     },
     computed: {
-      ...mapGetters(['lang']),
-      map () {
-        this.errorLabel = this.lang.components.XPassword.errorLabel
-        this.floatLabel = this.lang.components.XPassword.floatLabel
-        return this.floatLabel
-      },
       hasError () {
         return this.$v.$invalid && this.required
       }

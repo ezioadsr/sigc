@@ -11,11 +11,11 @@
             
             <x-login
               required
-              v-model="input.login"/>
+              v-model="data.login"/>
             
             <x-password
               required
-              v-model="input.password"/>
+              v-model="data.password"/>
             
             <x-error
               :message="error"
@@ -25,12 +25,12 @@
               <q-checkbox
                 v-model="remember"
                 :color="'primary'"
-                :label="'teste'">
+                :label="component.remember">
               </q-checkbox>
             </div>
             
             <div>
-              <q-btn color="primary" class="full-width" @click="submit">{{}}</q-btn>
+              <q-btn color="primary" class="full-width" @click="submit">{{component.submit}}</q-btn>
             </div>
           </div>
         </form>
@@ -40,13 +40,15 @@
 </template>
 <script>
   import { XLayout, XError, XLogo } from 'src/components/common/layout'
+  import { ADefault } from 'src/components/common/abstract'
   import { XLogin, XPassword, XFingerPrint } from 'src/components/common/input'
   import { QField, QInput, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
   import logo from 'src/assets/logo.svg'
   import { mapActions } from 'vuex'
   
   export default {
-    name: 'login',
+    mixins: [{...ADefault}],
+    name: 'auth-login',
     components: {
       XLogin,
       XPassword,
@@ -63,7 +65,7 @@
       XLayout
     },
     data: () => ({
-      input: {
+      data: {
         login: 'ezioadsr',
         password: '123456'
       },
@@ -76,7 +78,7 @@
     methods: {
       ...mapActions('auth', ['login']),
       submit () {
-        const {login, password} = this.input
+        const {login, password} = this.data
         this.login({login, password})
           .then((response) => {
             this.$router.push({name: 'dashboard.index'})
@@ -84,7 +86,6 @@
           .catch((error) => {
             this.error = error
           })
-        debugger
       }
     },
     computed: {
@@ -96,7 +97,6 @@
 </script>
 <style lang="stylus" scoped>
   .auth-index
-    padding: 10vw
     .c-auth-form
       position relative
       width: 100%

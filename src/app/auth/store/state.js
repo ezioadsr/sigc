@@ -1,5 +1,6 @@
 export default {
-  name: '',
+  name: 'José Manuel',
   avatar: '',
-  email: ''
+  email: 'josemanuel@contastotal.com.br',
+  gender: 'male'
 }

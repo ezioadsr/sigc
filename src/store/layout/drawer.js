@@ -1,55 +1,52 @@
 export default {
   options: [
     {
+      section: 'main',
       separator: false,
       header: false,
       items: [
         {
+          menu: 'main',
           icon: 'school',
-          label: 'Principal',
-          sublabel: 'Geral',
           route: '/dashboard/test1'
         },
         {
+          menu: 'today',
           icon: 'today',
-          label: 'Hoje',
-          sublabel: '',
           route: '/dashboard/test2'
         }
       ]
     },
     {
+      section: 'posting',
       separator: true,
       header: 'Lançamentos',
       items: [
         {
+          menu: 'posting',
           icon: 'done_all',
-          label: 'Lançamentos',
-          sublabel: '',
           route: '/dashboard/test3'
         },
         {
+          menu: 'calendar',
           icon: 'date_range',
-          label: 'Calendario',
-          sublabel: '',
           route: '/dashboard/test3'
         }
       ]
     },
     {
+      section: 'help',
       separator: true,
       header: false,
       items: [
         {
+          menu: 'settings',
           icon: 'settings',
-          label: 'Configurações',
-          sublabel: '',
           route: '/dashboard/test1'
         },
         {
+          menu: 'help',
           icon: 'help',
-          label: 'Ajuda',
-          sublabel: '',
           route: '/dashboard/test2'
         }
       ]

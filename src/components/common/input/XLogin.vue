@@ -6,24 +6,26 @@
       :icon="icon"
       :helper="helper"
       :error="hasError"
-      :error-label="errorLabel"
+      :error-label="component.errorLabel"
       :count="count"
       :inset="inset"
       :dark="dark">
       
       <q-input
-        v-model="data"
+        v-model="input"
         :type="'text'"
-        :float-label="floatLabel">
+        :float-label="component.floatLabel"
+        @change="$emit('input', input)">
       </q-input>
     
     </q-field>
     
     <q-input
       v-if="!field"
-      v-model="data"
+      v-model="input"
       :type="'text'"
-      :float-label="floatLabel">
+      :float-label="component.floatLabel"
+      @change="$emit('input', input)">
     </q-input>
   </div>
 </template>
@@ -49,9 +51,7 @@
     components: {
       QInput, QField
     },
-    data: () => ({
-      data: null
-    }),
+    data: () => ({}),
     validations: {
       text: {
         required

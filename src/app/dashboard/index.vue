@@ -10,7 +10,7 @@
         @logout="logout()"
         @help="help()">
       </x-toolbar>
-      <x-drawer slot="left" @toggle="toggle()" :name="auth.name" :avatar="auth.avatar" :drawer="drawer" >
+      <x-drawer slot="left" @toggle="toggle()" :name="auth.name" :avatar="avatar()" :drawer="drawer" :email="auth.email">
       </x-drawer>
     </x-layout>
   </div>
@@ -18,7 +18,7 @@
 <script>
   import { XLayout, XDrawer, XToolbar } from 'src/components'
   import { mapState, mapGetters, mapActions } from 'vuex'
-  
+  import { avatar } from 'src/assets'
   export default {
     name: 'dashboard-index',
     components: {
@@ -37,6 +37,11 @@
       },
       toggle () {
         this.$refs.layout.toggleLeft()
+      },
+      avatar () {
+        if (!this.auth.avatar) {
+          return avatar(this.auth.gender)
+        }
       }
     },
     computed: {

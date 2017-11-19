@@ -1,6 +1,6 @@
 <template>
   <div class="x-drawer">
-    <x-drawer-avatar :name="name" :avatar="avatar"></x-drawer-avatar>
+    <x-drawer-avatar :name="name" :avatar="avatar" :email="email"></x-drawer-avatar>
     <x-drawer-list :drawer="drawer"></x-drawer-list>
   </div>
 </template>
@@ -17,6 +17,10 @@
       XDrawerList, XDrawerAvatar, QInput
     },
     props: {
+      email: {
+        type: String,
+        required: true
+      },
       name: {
         type: String,
         required: true
