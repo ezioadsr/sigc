@@ -8,12 +8,12 @@ export default {
         {
           menu: 'main',
           icon: 'school',
-          route: '/dashboard/test1'
+          route: 'dashboard.index'
         },
         {
           menu: 'today',
           icon: 'today',
-          route: '/dashboard/test2'
+          route: 'dashboard.today'
         }
       ]
     },
@@ -25,12 +25,12 @@ export default {
         {
           menu: 'posting',
           icon: 'done_all',
-          route: '/dashboard/test3'
+          route: 'dashboard.posting'
         },
         {
           menu: 'calendar',
           icon: 'date_range',
-          route: '/dashboard/test3'
+          route: 'dashboard.calendar'
         }
       ]
     },
@@ -42,12 +42,12 @@ export default {
         {
           menu: 'settings',
           icon: 'settings',
-          route: '/dashboard/test1'
+          route: 'dashboard.settings'
         },
         {
           menu: 'help',
           icon: 'help',
-          route: '/dashboard/test2'
+          route: 'dashboard.help'
         }
       ]
     }

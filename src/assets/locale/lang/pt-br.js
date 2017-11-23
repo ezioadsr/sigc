@@ -50,7 +50,12 @@ const XDrawerList = {
   }
 }
 
-const components = {XPassword, XLogin, AuthLogin, XDrawerList}
+const XSignature = {
+  project: 'Um projeto github criado por',
+  suggestion: 'Caso tenha alguma sugestão, ou problema contate-nos'
+}
+
+const components = {XPassword, XLogin, AuthLogin, XDrawerList, XSignature}
 
 const app = {}
 

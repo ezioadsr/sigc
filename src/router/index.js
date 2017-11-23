@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Validate from 'src/support/services/validate'
+import Validate from 'src/support/services/validate'
 
-import auth from 'app/auth/router'
-import dashboard from 'app/dashboard/router'
-import help from 'app/help/router'
+import auth from 'app/auth/routes'
+import dashboard from 'app/dashboard/routes'
+import help from 'app/help/routes'
 
 // import {router as errors} from 'src/app/errors'
 
@@ -39,38 +39,44 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  // let token = await Validate.isLogged()
-  // // /**
-  // //  * If user not logged yet
-  // //  */
-  // //
-  // console.log(token)
-  // if (token === null) {
-  //   next('/login')
-  //   return
-  // }
-  //
+router.beforeEach(async (to, from, next) => {
+  let token = await Validate.isLogged()
   // /**
-  //  * If this route are a login route and user are logged
+  //  * If user not logged yet
   //  */
-  // if (to.name === 'auth.index' && token !== null) {
-  //   next({name: 'dashboard.index'})
-  //   return
-  // }
   //
-  // if (to.name !== 'auth.index' && token === null) {
-  //   next({name: 'auth.index'})
-  //   return
-  // }
-  // //
-  // /**
-  //  * If user haven't permission to access this router 'to'
-  //  */
-  // if (!Validate.havePermission(to, token)) {
-  //   next({name: 'auth.index'})
-  //   return
-  // }
+
+  if (to.name === null) {
+    next({name: 'dashboard.index'})
+    return
+  }
+  console.log(to.name)
+
+  if (token === null) {
+    next({name: 'auth.login'})
+    return
+  }
+
+  /**
+   * If this route are a login route and user are logged
+   */
+  if (to.name === 'auth.login' && token !== null) {
+    next({name: 'dashboard.index'})
+    return
+  }
+
+  if (to.name !== 'auth.login' && token === null) {
+    next({name: 'auth.login'})
+    return
+  }
+
+  /**
+   * If user haven't permission to access this router 'to'
+   */
+  if (!Validate.havePermission(to, token)) {
+    next({name: 'auth.login'})
+    return
+  }
   next()
 })
 

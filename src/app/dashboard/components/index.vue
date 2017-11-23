@@ -1,47 +1,28 @@
 <template>
-  <layout>
-    <div slot="modal">
-      <q-modal ref="maximizedModal" maximized>
-        <q-modal-layout>
-          <q-toolbar slot="header">
-            <q-btn flat @click="$refs.maximizedModal.close()">
-              <q-icon ios="chevron_left" mat="arrow_back"/>
-            </q-btn>
-            <q-toolbar-title>
-              Some Another Title
-            </q-toolbar-title>
-          </q-toolbar>
-          <div class="layout-padding">
-            <h1>Modal</h1>
-
-            <q-btn color="primary" @click="$refs.layoutModal.close()">Close</q-btn>
-            <p class="caption" v-for="n in 15">This is a Modal presenting a Layout.</p>
-          </div>
-        </q-modal-layout>
-      </q-modal>
-      <q-btn @click="$refs.maximizedModal.open()">Vutão</q-btn>
-    </div>
-  </layout>
+  <div class="dashboard-index">
+    <x-modal title="modal" ref="modal">
+      
+      something
+    
+    </x-modal>
+    
+    <q-btn @click="$refs.modal.open()">
+      open
+    </q-btn>
+  </div>
 </template>
 <script>
-  import Layout from '../../../../templates/layout.vue'
-  import Toolbar from '../../../../templates/layout/Toolbar.vue'
-  import {QModal, QBtn, QToolbar, QIcon, QToolbarTitle, QModalLayout} from 'quasar-framework'
-
+  import XModal from 'src/components/common/layout/XModalLayout.vue'
+  import { QBtn } from 'quasar-framework'
+  
   export default {
-    name: 'app',
-    components: {
-      Layout,
-      Toolbar,
-      QModal,
-      QBtn,
-      QToolbar,
-      QIcon,
-      QToolbarTitle,
-      QModalLayout
-    }
+    name: 'dashboard-index',
+    components: {XModal, QBtn},
+    data: () => ({}),
+    methods: {},
+    computed: {}
   }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 </style>
