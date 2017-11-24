@@ -1,4 +1,4 @@
- /** Inputs Locales */
+/** Inputs Locales */
 const XPassword = {
   floatLabel: 'Senha',
   errorLabel: 'Senha inválida'
