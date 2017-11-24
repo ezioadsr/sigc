@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-index">
+  <div class="dashboard-container">
     <x-layout padding ref="layout">
       <x-toolbar
         :before="before"
@@ -8,10 +8,17 @@
         slot="header"
         @toggle="toggle()"
         @logout="logout()"
-        @help="help()">
-      </x-toolbar>
-      <x-drawer slot="left" @toggle="toggle()" :name="auth.name" :avatar="avatar()" :drawer="drawer" :email="auth.email">
-      </x-drawer>
+        @help="help()"/>
+
+      
+      <x-drawer
+        slot="left"
+        :name="auth.name"
+        :avatar="avatar()"
+        :drawer="drawer"
+        :email="auth.email"
+        @toggle="toggle()"/>
+
     </x-layout>
   </div>
 </template>
@@ -20,7 +27,7 @@
   import { mapState, mapGetters, mapActions } from 'vuex'
   import { avatar } from 'src/assets'
   export default {
-    name: 'dashboard-index',
+    name: 'dashboard-container',
     components: {
       XLayout,
       XDrawer,

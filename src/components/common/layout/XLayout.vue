@@ -1,6 +1,9 @@
 <template>
   <div class="x-layout">
-    <q-layout ref="layout" view="lHh Lpr fff" :left-class="{'bg-grey-2': true}">
+    <q-layout
+      ref="layout" view="lHh Lpr fff"
+      :left-class="{'bg-grey-2': true}">
+      
       <div slot="header">
         <slot name="header"></slot>
       </div>

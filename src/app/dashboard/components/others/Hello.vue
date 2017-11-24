@@ -37,8 +37,8 @@
     QItemMain
   } from 'quasar-framework'
 
-  import Drawer from '../../../../templates/layout/Drawer.vue'
-  import Toolbar from '../../../../templates/layout/Toolbar.vue'
+  import Drawer from '../../../../../templates/layout/Drawer.vue'
+  import Toolbar from '../../../../../templates/layout/Toolbar.vue'
 
   const
     {viewport} = dom,

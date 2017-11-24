@@ -17,13 +17,15 @@ export default {
         {
           label: 'Sair',
           handler: (component) => {
-            component.$emit('logout')
+            const name = 'action.logout'
+            component.$router.push({name})
           }
         },
         {
           label: 'Ajuda',
           handler: (component) => {
-            component.$emit('help')
+            const name = 'dashboard.help'
+            component.$router.push({name})
           }
         }
       ]
