@@ -1,7 +1,7 @@
 import maleAvatar from './placeholder/man_avatar.jpg'
 import femaleAvatar from './placeholder/woman_avatar.png'
 
-import logo from './logo.svg'
+import logo from './logos/app.svg'
 
 const avatar = (gender) => {
   if (gender === 'female') {

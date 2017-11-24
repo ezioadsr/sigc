@@ -43,7 +43,7 @@
   import { ADefault } from 'src/components/common/abstract'
   import { XLogin, XPassword, XFingerPrint } from 'src/components/common/input'
   import { QField, QInput, QCheckbox, QBtn, QToolbar, QToolbarTitle, QIcon } from 'quasar-framework'
-  import logo from 'src/assets/logo.svg'
+  import logo from 'src/assets/logos/app.svg'
   import { mapActions } from 'vuex'
   
   export default {

@@ -2,34 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c1b631-2c86-40d3-b0d1-4e10adbc428d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/icons/vue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/Calendar.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/Posting.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/Settings.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/Today.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/help/components/XSignature.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/help/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/components/others/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/routes/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/common/layout/XModalLayout.vue" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/dashboard/router/index.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/auth/router/index.js" afterPath="$PROJECT_DIR$/src/app/auth/routes/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/dashboard/components/Error404.vue" afterPath="$PROJECT_DIR$/src/app/dashboard/components/others/Error404.vue" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/dashboard/components/Hello.vue" afterPath="$PROJECT_DIR$/src/app/dashboard/components/others/Hello.vue" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/help/router/index.js" afterPath="$PROJECT_DIR$/src/app/help/routes/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/assets/icons/vue.png" afterPath="$PROJECT_DIR$/src/assets/logos/vue.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/assets/logo.svg" afterPath="$PROJECT_DIR$/src/assets/logos/app.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/assets/quasar-logo-full.svg" afterPath="$PROJECT_DIR$/src/assets/logos/quasar.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/dashboard/components/index.vue" afterPath="$PROJECT_DIR$/src/app/dashboard/components/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/dashboard/index.vue" afterPath="$PROJECT_DIR$/src/app/dashboard/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/locale/lang/pt-br.js" afterPath="$PROJECT_DIR$/src/assets/locale/lang/pt-br.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/layout/XDrawerList.vue" afterPath="$PROJECT_DIR$/src/components/common/layout/XDrawerList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/layout/XLayout.vue" afterPath="$PROJECT_DIR$/src/components/common/layout/XLayout.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/layout/XToolbar.vue" afterPath="$PROJECT_DIR$/src/components/common/layout/XToolbar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/layout/index.js" afterPath="$PROJECT_DIR$/src/components/common/layout/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/layout/drawer.js" afterPath="$PROJECT_DIR$/src/store/layout/drawer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/layout/toolbar.js" afterPath="$PROJECT_DIR$/src/store/layout/toolbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/support/services/validate.js" afterPath="$PROJECT_DIR$/src/support/services/validate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/themes/app.variables.styl" afterPath="$PROJECT_DIR$/src/themes/app.variables.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/auth/index.vue" afterPath="$PROJECT_DIR$/src/app/auth/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/dashboard/components/help/components/XSignature.vue" afterPath="$PROJECT_DIR$/src/app/dashboard/components/help/components/XSignature.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/index.js" afterPath="$PROJECT_DIR$/src/assets/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -96,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/assets/locale/lang/en-us.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+              <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -105,11 +84,10 @@
       <file leaf-file-name="XSignature.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/dashboard/components/help/components/XSignature.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            <state relative-caret-position="396">
+              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#858#915#0" expanded="true" />
+                <element signature="e#1578#1635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/help/index.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,7 +126,7 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/dashboard/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
+            <state relative-caret-position="1062">
               <caret line="61" column="6" lean-forward="false" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
               <folding>
                 <marker date="1511389118025" expanded="true" signature="1193:1201" ph="{...}" />
@@ -158,7 +136,7 @@
         </entry>
       </file>
       <file leaf-file-name="vue.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/icons/vue.png">
+        <entry file="file://$PROJECT_DIR$/src/assets/logos/vue.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -337,10 +315,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2333" />
-    <option name="y" value="176" />
-    <option name="width" value="1215" />
-    <option name="height" value="904" />
+    <option name="x" value="2264" />
+    <option name="y" value="204" />
+    <option name="width" value="1211" />
+    <option name="height" value="860" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -440,7 +418,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -512,7 +489,7 @@
               <item name="sigc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="icons" type="462c0819:PsiDirectoryNode" />
+              <item name="logos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sigc" type="b2602c69:ProjectViewProjectNode" />
@@ -575,6 +552,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -594,16 +572,16 @@
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/locale/lang" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/logos" />
       <recent name="$PROJECT_DIR$/src/app/dashboard/components/help" />
       <recent name="$PROJECT_DIR$/src/app/dashboard/components/others" />
       <recent name="$PROJECT_DIR$/src/components/common/layout" />
       <recent name="$PROJECT_DIR$/src/store" />
-      <recent name="$PROJECT_DIR$/src/app/dashboard/store/Data" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/locale/lang" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -647,12 +625,13 @@
       <workItem from="1509668200220" duration="3341000" />
       <workItem from="1510415788725" duration="8292000" />
       <workItem from="1511299377251" duration="1222000" />
-      <workItem from="1511386908377" duration="11838000" />
+      <workItem from="1511386908377" duration="12171000" />
+      <workItem from="1511477333555" duration="2027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162829000" />
+    <option name="totallyTimeSpent" value="165189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="176" width="1600" height="904" extended-state="6" />
@@ -696,7 +675,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/assets/placeholder/woman_avatar.png" />
-    <entry file="file://$PROJECT_DIR$/src/assets/logo.svg">
+    <entry file="file://$PROJECT_DIR$/src/assets/logos/app.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -750,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -758,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,9 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <marker date="1511299356160" expanded="true" signature="965:973" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,9 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -840,22 +808,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/layout/drawer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <marker date="1511387305769" expanded="true" signature="34:44" ph="{...}" />
-            <marker date="1511387305769" expanded="true" signature="946:992" ph="{&quot;icon&quot;: 'help'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/layout/toolbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,9 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="1723" column="34" lean-forward="true" selection-start-line="1723" selection-start-column="34" selection-end-line="1723" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -883,9 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -903,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,7 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,18 +882,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/layout/x-signature.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/layout/x-signature.vue" />
     <entry file="file://$PROJECT_DIR$/node_modules/quasar-framework/dist/quasar.esm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -1046,7 +985,7 @@
     <entry file="file://$PROJECT_DIR$/src/app/help/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1054,7 +993,7 @@
     <entry file="file://$PROJECT_DIR$/src/assets/locale/lang/en-us.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1077,10 +1016,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/dashboard/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="1062">
           <caret line="61" column="6" lean-forward="false" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
           <folding>
             <marker date="1511389118025" expanded="true" signature="1193:1201" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/logos/vue.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/layout/drawer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <marker date="1511387305769" expanded="true" signature="34:44" ph="{...}" />
+            <marker date="1511387305769" expanded="true" signature="946:992" ph="{&quot;icon&quot;: 'help'...}" />
           </folding>
         </state>
       </provider>
@@ -1109,18 +1064,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/icons/vue.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/dashboard/components/help/components/XSignature.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="396">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#858#915#0" expanded="true" />
+            <element signature="e#1578#1635#0" expanded="true" />
           </folding>
         </state>
       </provider>
