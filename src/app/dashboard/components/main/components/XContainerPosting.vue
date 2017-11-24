@@ -11,7 +11,10 @@
         
         </div>
         <div v-for="n in items" class="posting-item">
-          <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
+          <div>
+            <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
+          </div>
+          
         </div>
       </div>
       
@@ -21,7 +24,7 @@
         </div>
         
         <div v-for="n in items" class="posting-item">
-          <q-checkbox v-for="n in radios" v-model="checked[n]" />
+          <q-checkbox v-for="n in radios" v-model="checked[n]"/>
         </div>
       
       </div>
@@ -70,11 +73,14 @@
         // console.log(' ~> holded', evt)
       },
       pan (evt) {
+        if (!evt.delta.x) {
+          return null
+        }
         this.position += evt.delta.x
       }
     },
     computed: {
-      left () {
+      progress () {
         const {position, $el, min, max} = this
         if (!$el) {
           return 70
@@ -89,20 +95,11 @@
         }
         return percent
       },
+      left () {
+        return this.progress
+      },
       right () {
-        const {position, $el, min, max} = this
-        if (!$el) {
-          return 30
-        }
-        const {clientWidth} = $el
-        const percent = 100 - 100 * position / clientWidth
-        if (percent < 100 - max) {
-          return 100 - max
-        }
-        if (percent > 100 - min) {
-          return 100 - min
-        }
-        return percent
+        return 100 - this.progress
       }
     }
   }
