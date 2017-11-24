@@ -2,7 +2,8 @@
   <div class="x-layout">
     <q-layout
       ref="layout" view="lHh Lpr fff"
-      :left-class="{'bg-grey-2': true}">
+      :left-class="{'bg-grey-2': true}"
+      :sides="{left: true, right: false}">
       
       <div slot="header">
         <slot name="header"></slot>

@@ -6,7 +6,7 @@ export default [
       {
         name: 'dashboard.index',
         path: '',
-        component: 'app/dashboard/components/index.vue'
+        component: 'app/dashboard/components/main/index.vue'
       },
       {
         name: 'dashboard.help',

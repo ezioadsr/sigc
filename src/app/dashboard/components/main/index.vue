@@ -6,6 +6,8 @@
     
     </x-modal>
     
+    <x-container-posting/>
+    
     <q-btn @click="$refs.modal.open()">
       open
     </q-btn>
@@ -14,10 +16,15 @@
 <script>
   import XModal from 'src/components/common/layout/XModalLayout.vue'
   import { QBtn } from 'quasar-framework'
+  import XContainerPosting from './components/XContainerPosting.vue'
   
   export default {
     name: 'dashboard-index',
-    components: {XModal, QBtn},
+    components: {
+      XContainerPosting,
+      XModal,
+      QBtn
+    },
     data: () => ({}),
     methods: {},
     computed: {}
