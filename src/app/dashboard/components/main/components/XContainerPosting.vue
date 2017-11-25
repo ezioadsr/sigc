@@ -1,48 +1,59 @@
 <template>
-  <div class="x-container-posting">
+  <div class="x-container-posting relative-position"
+       v-touch-pan.horizontal="onPan">
     
-    <div
-      class="row"
-      v-touch-hold="hold"
-      v-touch-pan="pan"
-      v-touch-swipe="swipe">
-      <div class="container-left" :style="`width: ${left}%`">
-        <div class="posting-header">
-        
-        </div>
-        <div v-for="n in items" class="posting-item">
-          <div>
-            <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
-          </div>
-          
-        </div>
-      </div>
+    <div class="static-container-posting">
+      <div class="posting-header"></div>
       
-      <div class="container-right" :style="`width: ${right}%`">
-        <div class="posting-header">
-        
+      <div v-for="n in items" :key="'colchao'" class="posting-item row">
+        <div style="width: 2em"><span v-html="n"></span></div>
+        <div style="width: calc(100% - 2em)">
+          <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
         </div>
-        
-        <div v-for="n in items" class="posting-item">
-          <q-checkbox v-for="n in radios" v-model="checked[n]"/>
-        </div>
-      
       </div>
     </div>
-  
-  
+    
+    <div ref="floatingContainer" class="floating-container-posting absolute-top-right"
+         :style="{'transform': `translateX(${position}px)`}">
+      <div class="posting-header">
+        <q-btn flat>
+          <q-icon name="done_all"></q-icon>
+        </q-btn>
+      </div>
+      
+      <div v-for="n in items" :key="'colchao'" class="posting-item">
+        <q-option-group
+          class="no-margin"
+          left-label
+          inline
+          type="checkbox"
+          color="positive"
+          v-model="checked[n]"
+          :options="[
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'london' },
+          { label: '', value: 'paris' }
+        ]"
+        />
+      </div>
+    </div>
+    
+    <!--<q-resize-observable @resize="onResize"/>  -->
   </div>
 </template>
 <script>
-  import { QCheckbox, TouchHold, TouchPan, TouchSwipe } from 'quasar-framework'
+  import { QBtn, QIcon, QCheckbox, QOptionGroup, TouchPan, TouchSwipe } from 'quasar-framework'
   
   export default {
     name: 'x-container-posting',
     components: {
-      QCheckbox
+      QBtn, QIcon, QCheckbox, QOptionGroup
     },
     directives: {
-      TouchHold, TouchPan, TouchSwipe
+      TouchPan, TouchSwipe
     },
     props: {},
     data: () => ({
@@ -57,73 +68,45 @@
         '5': null,
         '6': null
       },
-      position: 50,
-      max: null,
-      min: null
+      position: 0
     }),
     created () {
       this.min = 30
       this.max = 80
     },
+    mounted () {
+      this.floatingContainerWidth = this.$refs.floatingContainerWidth.clientHeight
+    },
     methods: {
-      swipe (evt) {
-        // console.log(' ~> swiped', evt)
-      },
-      hold (evt) {
-        // console.log(' ~> holded', evt)
-      },
-      pan (evt) {
-        if (!evt.delta.x) {
+      onPan (evt) {
+        if (evt.delta.x === 0) {
           return null
         }
-        this.position += evt.delta.x
-      }
-    },
-    computed: {
-      progress () {
-        const {position, $el, min, max} = this
-        if (!$el) {
-          return 70
+        // this.duration = evt.duration
+        const delta = this.position + evt.delta.x
+        if (delta > 0 && delta < 200) {
+          this.position = delta
         }
-        const {clientWidth} = $el
-        const percent = 100 * position / clientWidth
-        if (percent < min) {
-          return min
-        }
-        if (percent > max) {
-          return max
-        }
-        return percent
-      },
-      left () {
-        return this.progress
-      },
-      right () {
-        return 100 - this.progress
       }
     }
   }
 </script>
 <style lang="stylus">
   .x-container-posting
-    .container-left, .container-right
-      height 100vh
-      .posting-header
-        height 3.5em
-        background-color: #00b0ff
-        margin 2px
-      .posting-item
-        height 3em
-        margin 2px
-        div
-          padding 7px 3px
-          display block
-          float: left
-        > *
-          margin 0
-        background-color: greenyellow
-    .container-left
+    overflow hidden
+    .posting-header
+      height 3.5em
+      background-color: #00b0ff
+    .posting-item
+      height 3em
+    .static-container-posting
       background-color: purple
-    .container-right
-      background-color: darkorange
+    .floating-container-posting
+      display: inline-block
+      background-color #f1f1f1
+  
+  /*-webkit-transition-delay: 0, 0, 0, 1000ms*/
+  /*-webkit-transition-property: left, top, background, -webkit-transform;*/
+  /*-webkit-transition-timing-function: ease-out, ease-in, linear, ease-in-out;*/
+
 </style>
