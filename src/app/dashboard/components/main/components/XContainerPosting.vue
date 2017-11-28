@@ -14,11 +14,35 @@
     </div>
     
     <div ref="floatingContainer" class="floating-container-posting absolute-top-right"
-         :style="{'transform': `translateX(${position}px)`}">
+         :style="style">
       <div class="posting-header">
-        <q-btn flat>
-          <q-icon name="done_all"></q-icon>
-        </q-btn>
+        <div>
+          <q-btn flat>
+            <q-icon name="done_all"></q-icon>
+          </q-btn>
+        </div>
+        <div class="item">
+          <span v-for="n in radios" :key="'horairo'">
+          {{n}}º
+          </span>
+        </div>
+        <q-option-group
+          class="no-margin"
+          left-label
+          inline
+          type="checkbox"
+          color="positive"
+          v-model="checked"
+          :options="[
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'bucharest' },
+          { label: '', value: 'london' },
+          { label: '', value: 'paris' }
+        ]"
+        />
+      
       </div>
       
       <div v-for="n in items" :key="'colchao'" class="posting-item">
@@ -28,7 +52,7 @@
           inline
           type="checkbox"
           color="positive"
-          v-model="checked[n]"
+          v-model="checked"
           :options="[
           { label: '', value: 'bucharest' },
           { label: '', value: 'bucharest' },
@@ -60,33 +84,40 @@
       toggle: null,
       items: 20,
       radios: 6,
-      checked: {
-        '1': null,
-        '2': null,
-        '3': null,
-        '4': null,
-        '5': null,
-        '6': null
-      },
-      position: 0
+      checked: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      position: 0,
+      duration: 0,
+      style: {}
     }),
     created () {
       this.min = 30
       this.max = 80
     },
-    mounted () {
-      this.floatingContainerWidth = this.$refs.floatingContainerWidth.clientHeight
-    },
+    mounted () {},
     methods: {
       onPan (evt) {
-        if (evt.delta.x === 0) {
+        console.log(evt)
+        const {x} = evt.delta
+        if (x === 0) {
           return null
         }
-        // this.duration = evt.duration
-        const delta = this.position + evt.delta.x
-        if (delta > 0 && delta < 200) {
-          this.position = delta
+        const delta = this.position + x
+        // const duration = evt.duration > 300 ? 300 : evt.duration
+        if (!(delta > 0 && delta < 200)) {
+          return null
         }
+        this.style = {
+          'transform': `translateX(${delta}px)`// ,
+          // '-webkit-transition-duration': `${duration}ms`
+        }
+        this.position = delta
       }
     }
   }
@@ -95,8 +126,11 @@
   .x-container-posting
     overflow hidden
     .posting-header
-      height 3.5em
+      height 100px
       background-color: #00b0ff
+      .item > span
+        width: 21px
+        margin 6px
     .posting-item
       height 3em
     .static-container-posting
@@ -104,9 +138,11 @@
     .floating-container-posting
       display: inline-block
       background-color #f1f1f1
+      -webkit-transition-timing-function: ease-out, ease-in, linear, ease-in-out;
+  
+  /*-webkit-transition-property: -webkit-transform*/
   
   /*-webkit-transition-delay: 0, 0, 0, 1000ms*/
   /*-webkit-transition-property: left, top, background, -webkit-transform;*/
-  /*-webkit-transition-timing-function: ease-out, ease-in, linear, ease-in-out;*/
 
 </style>
