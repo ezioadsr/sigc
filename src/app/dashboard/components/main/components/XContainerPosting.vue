@@ -2,28 +2,31 @@
   <div class="x-container-posting relative-position"
        v-touch-pan.horizontal="onPan">
     
-    <div class="static-container-posting">
-      <div class="posting-header"></div>
+    <div v-if="wait" class="static-container-posting">
+      <div class="posting-header">
+        <span class="header-text text-bold">Alunos</span>
+        <p>6 aulas consecutivas, de 19:30 as 10:40</p>
+      </div>
       
-      <div v-for="n in items" :key="'colchao'" class="posting-item row">
-        <div style="width: 2em"><span v-html="n"></span></div>
+      <div v-for="(_student, index) in data" :key="'colchao'" class="posting-item row items-center">
+        <div style="width: 2em"><span v-html="index + 1"></span></div>
         <div style="width: calc(100% - 2em)">
-          <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
+          <span v-html="_student.name"/>
         </div>
       </div>
     </div>
     
-    <div ref="floatingContainer" class="floating-container-posting absolute-top-right"
-         :style="style">
+    <div v-if="wait" ref="floatingContainer" class="floating-container-posting absolute-top-right"
+         :style="{'transform': `translateX(${position}px)`}">
       <div class="posting-header">
-        <div>
-          <q-btn flat>
-            <q-icon name="done_all"></q-icon>
+        <div class="info">
+          <q-btn flat class="animate-pop">
+            <q-icon color="warning" name="info"></q-icon>
           </q-btn>
         </div>
         <div class="item">
-          <span v-for="n in radios" :key="'horairo'">
-          {{n}}º
+          <span v-for="(_option, index) in options" :key="'horairo'">
+          {{index + 1}}º
           </span>
         </div>
         <q-option-group
@@ -31,77 +34,89 @@
           left-label
           inline
           type="checkbox"
-          color="positive"
-          v-model="checked"
-          :options="[
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'london' },
-          { label: '', value: 'paris' }
-        ]"
+          color="warning"
+          v-model="autoCheck"
+          :options="options"
         />
       
       </div>
       
-      <div v-for="n in items" :key="'colchao'" class="posting-item">
+      <div v-for="_student in data" :key="'colchao'" class="posting-item row items-center">
         <q-option-group
           class="no-margin"
           left-label
           inline
           type="checkbox"
           color="positive"
-          v-model="checked"
-          :options="[
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'bucharest' },
-          { label: '', value: 'london' },
-          { label: '', value: 'paris' }
-        ]"
+          v-model="_student.options"
+          :options="options"
         />
       </div>
     </div>
+    <div style="height: 60px"></div>
+    
+    <q-fixed-position corner="bottom-right" :offset="[18, 18]">
+      <q-btn
+        v-back-to-top.animate="{offset: 500, duration: 200}"
+        round
+        class="animate-pop"
+        color="primary"
+        @click="alert"
+        icon="keyboard_arrow_up"
+      />
+    </q-fixed-position>
     
     <!--<q-resize-observable @resize="onResize"/>  -->
   </div>
 </template>
 <script>
-  import { QBtn, QIcon, QCheckbox, QOptionGroup, TouchPan, TouchSwipe } from 'quasar-framework'
+  import {
+    QBtn,
+    QIcon,
+    QCheckbox,
+    QOptionGroup,
+    QFixedPosition,
+    TouchPan,
+    TouchSwipe,
+    BackToTop
+  } from 'quasar-framework'
+  
+  import { ADefault } from 'src/components/common/abstract'
+  import union from 'lodash/union'
+  import difference from 'lodash/difference'
   
   export default {
     name: 'x-container-posting',
+    mixins: [ADefault],
     components: {
-      QBtn, QIcon, QCheckbox, QOptionGroup
+      QBtn, QIcon, QCheckbox, QOptionGroup, QFixedPosition
     },
     directives: {
-      TouchPan, TouchSwipe
+      TouchPan, TouchSwipe, BackToTop
     },
     props: {},
     data: () => ({
       toggle: null,
+      size: 6,
       items: 20,
-      radios: 6,
-      checked: [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      autoCheck: [],
+      autoCheckPreviously: [],
+      options: [],
+      data: [],
       position: 0,
-      duration: 0,
       style: {}
     }),
     created () {
       this.min = 30
       this.max = 80
     },
-    mounted () {},
+    mounted () {
+      this.populate()
+    },
     methods: {
+      alert () {
+        console.log('alert')
+      },
       onPan (evt) {
         console.log(evt)
         const {x} = evt.delta
@@ -118,23 +133,121 @@
           // '-webkit-transition-duration': `${duration}ms`
         }
         this.position = delta
+      },
+      populate (data) {
+        this.data = this.changeData(data)
+        if (this.data.length) {
+          for (let i = 0; i < this.size; i++) {
+            this.options.push({label: '', value: i})
+          }
+        }
+      },
+      changeData (data) {
+        return [
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          },
+          {
+            name: 'Fernando manoel da Silva',
+            options: []
+          }
+        ]
+      }
+    },
+    watch: {
+      autoCheck (value, old) {
+        const performed = difference(value, this.autoCheckPreviously)
+        console.log(performed, value, this.autoCheckPreviously)
+        this.data.forEach((_student) => {
+          _student.options = union(_student.options, performed)
+        })
+        this.autoCheckPreviously = [...value]
       }
     }
   }
 </script>
 <style lang="stylus">
+  @import '~variables'
   .x-container-posting
     overflow hidden
     .posting-header
-      height 100px
-      background-color: #00b0ff
+      height 6em
+      padding 0 16px
+      border-bottom: 1px solid #ddd;
+      .info
+        text-align end
+      .header-text
+        font-size 1.5em
       .item > span
         width: 21px
         margin 6px
     .posting-item
       height 3em
+      border-bottom: 1px solid #ddd;
+      padding 0 16px
     .static-container-posting
-      background-color: purple
+      max-heigth 50000px
     .floating-container-posting
       display: inline-block
       background-color #f1f1f1
