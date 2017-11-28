@@ -1,6 +1,6 @@
 <template>
   <div class="x-modal">
-    <q-modal ref="_modal" :content-css="{minWidth: '80vw', minHeight: '80vh'}">
+    <q-modal ref="_modal" :content-css="{minWidth: '90vw', minHeight: '90vh'}">
       <q-modal-layout>
         
         <x-toolbar
@@ -8,7 +8,7 @@
           v-bind="bind"
           :title="title"/>
         
-        <div class="layout-padding">
+        <div :class="layout">
           <slot></slot>
         </div>
       
@@ -28,6 +28,9 @@
       QModal
     },
     props: {
+      padding: {
+        type: Boolean
+      },
       title: {
         type: String,
         required: true
@@ -67,6 +70,9 @@
       },
       active () {
         return this.$refs._modal.active
+      },
+      layout () {
+        return this.padding ? 'layout-padding' : ''
       }
     }
   }

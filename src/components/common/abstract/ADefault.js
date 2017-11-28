@@ -4,9 +4,12 @@ export default {
   props: {
     dark: Boolean
   },
-  data: () => ({}),
+  data: () => ({
+    wait: false
+  }),
   mounted () {
     this.input = this.value
+    setTimeout(() => { this.wait = true }, 100)
   },
   computed: {
     ...mapGetters(['lang']),

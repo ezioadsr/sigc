@@ -2,10 +2,12 @@
   <div class="x-container-posting relative-position"
        v-touch-pan.horizontal="onPan">
     
-    <div class="static-container-posting">
-      <div class="posting-header"></div>
+    <div v-if="wait" class="static-container-posting">
+      <div class="posting-header">
+        <span class="header-text text-bold">Alunos</span>
+      </div>
       
-      <div v-for="n in items" :key="'colchao'" class="posting-item row">
+      <div v-for="n in items" :key="'colchao'" class="posting-item row items-center">
         <div style="width: 2em"><span v-html="n"></span></div>
         <div style="width: calc(100% - 2em)">
           <span>FERNANDO MANOEL DA SILVA BOLTELHO</span>
@@ -13,7 +15,7 @@
       </div>
     </div>
     
-    <div ref="floatingContainer" class="floating-container-posting absolute-top-right"
+    <div v-if="wait" ref="floatingContainer" class="floating-container-posting absolute-top-right"
          :style="{'transform': `translateX(${position}px)`}">
       <div class="posting-header">
         <q-btn flat>
@@ -21,7 +23,7 @@
         </q-btn>
       </div>
       
-      <div v-for="n in items" :key="'colchao'" class="posting-item">
+      <div v-for="n in items" :key="'colchao'" class="posting-item row items-center">
         <q-option-group
           class="no-margin"
           left-label
@@ -41,19 +43,42 @@
       </div>
     </div>
     
+    <q-fixed-position corner="bottom-right" :offset="[18, 18]">
+      <q-btn
+        v-back-to-top.animate="{offset: 500, duration: 200}"
+        round
+        class="animate-pop"
+        color="primary"
+        @click="alert"
+        icon="keyboard_arrow_up"
+      />
+    </q-fixed-position>
+    
     <!--<q-resize-observable @resize="onResize"/>  -->
   </div>
 </template>
 <script>
-  import { QBtn, QIcon, QCheckbox, QOptionGroup, TouchPan, TouchSwipe } from 'quasar-framework'
+  import {
+    QBtn,
+    QIcon,
+    QCheckbox,
+    QOptionGroup,
+    QFixedPosition,
+    TouchPan,
+    TouchSwipe,
+    BackToTop
+  } from 'quasar-framework'
+  
+  import { ADefault } from 'src/components/common/abstract'
   
   export default {
     name: 'x-container-posting',
+    mixins: [ADefault],
     components: {
-      QBtn, QIcon, QCheckbox, QOptionGroup
+      QBtn, QIcon, QCheckbox, QOptionGroup, QFixedPosition
     },
     directives: {
-      TouchPan, TouchSwipe
+      TouchPan, TouchSwipe, BackToTop
     },
     props: {},
     data: () => ({
@@ -74,10 +99,11 @@
       this.min = 30
       this.max = 80
     },
-    mounted () {
-      this.floatingContainerWidth = this.$refs.floatingContainerWidth.clientHeight
-    },
+    mounted () { },
     methods: {
+      alert () {
+        console.log('alert')
+      },
       onPan (evt) {
         if (evt.delta.x === 0) {
           return null
@@ -92,15 +118,19 @@
   }
 </script>
 <style lang="stylus">
+  @import '~variables'
   .x-container-posting
     overflow hidden
     .posting-header
       height 3.5em
-      background-color: #00b0ff
+      .header-text
+        font-size 1.5em
     .posting-item
       height 3em
+      border-bottom: 1px solid #ddd;
+      padding 0 16px
     .static-container-posting
-      background-color: purple
+      max-heigth 50000px
     .floating-container-posting
       display: inline-block
       background-color #f1f1f1
