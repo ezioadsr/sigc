@@ -61,7 +61,6 @@
         round
         class="animate-pop"
         color="primary"
-        @click="alert"
         icon="keyboard_arrow_up"
       />
     </q-fixed-position>
@@ -114,9 +113,6 @@
       this.populate()
     },
     methods: {
-      alert () {
-        console.log('alert')
-      },
       onPan (evt) {
         console.log(evt)
         const {x} = evt.delta
@@ -124,13 +120,11 @@
           return null
         }
         const delta = this.position + x
-        // const duration = evt.duration > 300 ? 300 : evt.duration
         if (!(delta > 0 && delta < 200)) {
           return null
         }
         this.style = {
-          'transform': `translateX(${delta}px)`// ,
-          // '-webkit-transition-duration': `${duration}ms`
+          'transform': `translateX(${delta}px)`
         }
         this.position = delta
       },
@@ -217,10 +211,12 @@
     },
     watch: {
       autoCheck (value, old) {
-        const performed = difference(value, this.autoCheckPreviously)
-        console.log(performed, value, this.autoCheckPreviously)
+        const {autoCheckPreviously} = this
+        const check = difference(value, autoCheckPreviously)
+        const uncheck = difference(autoCheckPreviously, value)
         this.data.forEach((_student) => {
-          _student.options = union(_student.options, performed)
+          _student.options = union(_student.options, check)
+          _student.options = difference(_student.options, uncheck)
         })
         this.autoCheckPreviously = [...value]
       }
@@ -252,10 +248,5 @@
       display: inline-block
       background-color #f1f1f1
       -webkit-transition-timing-function: ease-out, ease-in, linear, ease-in-out;
-  
-  /*-webkit-transition-property: -webkit-transform*/
-  
-  /*-webkit-transition-delay: 0, 0, 0, 1000ms*/
-  /*-webkit-transition-property: left, top, background, -webkit-transform;*/
 
 </style>

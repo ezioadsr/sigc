@@ -1,0 +1,15 @@
+@import 'quasar.variables.styl'
+@import '~variables'
+
+for $n in (1..24)
+  .animate-delay-{$n}
+    animation-duration: 150ms
+    animation-delay: ($n - 1) * 50ms !important
+
+for $n in (1..24)
+  .depth-{$n}
+    z-index: $n
+    box-shadow: $shadow-+$n
+    transition $shadow-transition
+
+

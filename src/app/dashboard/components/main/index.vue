@@ -1,61 +1,46 @@
 <template>
-  <div class="dashboard-index">
+  <div class="dashboard-index row">
     
-    <q-card v-ripple :class="['relative-position']" v-for="n in 10">
-      <q-card-title @click="animateScale">
-        Tumar U Undefined
-      </q-card-title>
-      <q-card-main @click="animateScale">
-      
-      </q-card-main>
-      <q-card-actions :align="'end'">
-        <q-btn flat small>
-          <span class="gt-lg">Sincronizado</span>
-          <q-icon color="green" name="cached"/>
-        </q-btn>
-        <q-btn flat small>
-          <span class="gt-lg">Feita</span>
-          <q-icon color="green" name="done"/>
-        </q-btn>
-        <q-btn flat small>
-          <span class="gt-lg">Habilitada</span>
-          <q-icon color="blue" name="notifications_active"/>
-        </q-btn>
-      </q-card-actions>
-    </q-card>
     
-    <x-modal padding title="Chamada" ref="modal" :after="after">
-      <x-container-posting/>
-    </x-modal>
+      <x-card-test :class="['col-md-3', 'slideInUp', `animate-delay-${n}`] " v-for="n in 30" />
+    
+  
   </div>
 </template>
 <script>
   import XModal from 'src/components/common/layout/XModalLayout.vue'
-  import { QBtn, QCard, QCardMain, QCardTitle, QCardActions, QIcon, Ripple } from 'quasar-framework'
-  import XContainerPosting from './components/XContainerPosting.vue'
+  import { QBtn, QCard, QCardMain, QCardTitle, QCardActions, QIcon, QCardSeparator, Ripple } from 'quasar-framework'
+  // import XContainerPosting from './components/XContainerPosting.vue'
+  import XCardTest from './components/XCardTest.vue'
   
   export default {
     name: 'dashboard-index',
     components: {
-      XContainerPosting,
+      // XContainerPosting,
+      XCardTest,
       XModal,
       QBtn,
       QCard,
       QCardTitle,
       QCardMain,
       QCardActions,
-      QIcon
+      QIcon,
+      QCardSeparator
     },
     directives: {
       Ripple
     },
     data: () => ({
-      animate: ''
+      animate: '',
+      classes: []
     }),
     methods: {
       animateScale () {
         this.animate = 'shadow-10 window-height window-width'
         this.$refs.modal.open()
+      },
+      hover (evt) {
+        console.log(evt)
       }
     },
     computed: {
@@ -74,9 +59,14 @@
   }
 </script>
 <style lang="stylus" scoped>
+  @import '~custom'
+  
   .dashboard-index
+    .card-container
+      overflow hidden
     .q-card
       padding: 0 8px
-      transition: height .5s ease-in-out .3s, width .5s ease-in-out .3s, box-shadow 0.8s ease-in-out 1s
-
+      @extend .depth-1
+      &:hover
+        @extend .depth-5
 </style>

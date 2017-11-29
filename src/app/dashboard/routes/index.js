@@ -31,7 +31,7 @@ export default [
       {
         name: 'dashboard.today',
         path: 'today',
-        component: 'app/dashboard/components/Today.vue'
+        component: 'app/dashboard/components/today/index.vue'
       }
     ]
   }
